@@ -28,4 +28,12 @@ RSpec.describe Cell do
     end
   end
 
+  describe "fired_upon?" do
+    it "can return whether a ship has been hit" do 
+      @cell.place_ship(@cruiser)
+
+      expect(@cell.fired_upon?).to be false
+    end
+  end
+
 end
