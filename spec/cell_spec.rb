@@ -19,4 +19,13 @@ RSpec.describe Cell do
     end
   end
 
+  describe "place_ship" do
+    it "can place a ship in a cell" do 
+      @cell.place_ship(@cruiser)
+
+      expect(@cell.ship).to eq(@cruiser)
+      expect(@cell.empty?).to be false
+    end
+  end
+
 end
