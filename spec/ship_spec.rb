@@ -12,9 +12,13 @@ RSpec.describe Ship do
       expect(@cruiser.health).to eq(3)
     end
   end
+
+  describe "sunk?" do
+    it "returns whether a ship is sunk" do
+      expect(@cruiser.sunk?).to be false
+    end
+  end
 end
-# cruiser.sunk?
-# #=> false
 # cruiser.hit
 # cruiser.health
 # #=> 2
