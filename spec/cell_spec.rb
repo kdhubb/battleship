@@ -36,4 +36,21 @@ RSpec.describe Cell do
     end
   end
 
+  describe "fire_upon" do
+    it "will fire upon the cell" do 
+      @cell.place_ship(@cruiser)
+      
+      @cell.fire_upon
+
+      expect(@cell.ship.health).to eq(2)
+      expect(@cell.fired_upon?).to be true
+    end
+
+    it "can't fire upon an empty cell" do 
+      @cell.fire_upon
+
+      expect(@cell.fired_upon?).to be false
+    end
+  end  
+
 end

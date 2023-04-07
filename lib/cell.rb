@@ -16,6 +16,14 @@ class Cell
   end
 
   def fired_upon?
-    @ship.health != @ship.length
+    if @ship != nil
+      @ship.health != @ship.length
+    else
+      false
+    end
+  end
+
+  def fire_upon
+    @ship.hit if @ship != nil
   end
 end
