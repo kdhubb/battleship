@@ -26,4 +26,10 @@ class Cell
   def fire_upon
     @ship.hit if @ship != nil
   end
+
+  def render
+    if @ship == nil
+      "."
+    end
+  end
 end

@@ -4,6 +4,7 @@ RSpec.describe Cell do
   before(:each) do 
     @cell = Cell.new("B4")
     @cruiser = Ship.new("Cruiser", 3)
+    
   end
 
   describe "coordinate" do 
@@ -52,5 +53,16 @@ RSpec.describe Cell do
       expect(@cell.fired_upon?).to be false
     end
   end  
+
+  before(:each) do 
+    @cell_1 = Cell.new("B4")
+    @cell_2 = Cell.new("C3")
+  end
+
+  describe "render" do 
+    it "will return a . for an empty cell not fired upon" do 
+      expect(@cell_1.render).to eq(".")
+    end
+  end
 
 end
