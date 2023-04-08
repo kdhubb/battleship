@@ -14,4 +14,14 @@ RSpec.describe Board do
       expect(@board.cells.length).to eq(16)
     end
   end
+ 
+  describe "valid_coordinate?" do
+    it "checks to see if a coordinate is valid or exists" do
+      expect(@board.valid_coordinate?("A1")).to be true
+      expect(@board.valid_coordinate?("D4")).to be true
+      expect(@board.valid_coordinate?("A5")).to be false
+      expect(@board.valid_coordinate?("E1")).to be false
+      expect(@board.valid_coordinate?("A22")).to be false
+    end
+  end
 end
