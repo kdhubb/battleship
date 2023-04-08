@@ -63,6 +63,13 @@ RSpec.describe Cell do
 
       expect(@cell_1.render).to eq("M")
     end
+
+    it "will show where a ship has been placed and not fired upon" do 
+      @cell_2.place_ship(@cruiser)
+      expect(@cell_2.render).to eq(".")
+
+      expect(@cell_2.render(true)).to eq("S")
+    end
   end
 
 end

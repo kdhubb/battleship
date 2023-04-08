@@ -27,11 +27,21 @@ class Cell
     @fired_upon = true
   end
 
-  def render
-    if empty? && !fired_upon?
-      "."
-    elsif empty? && fired_upon?
-      "M"
+  def render(param = false)
+    if param == false
+      if !fired_upon?
+        "."
+      elsif empty? && fired_upon?
+        "M"
+      end
+    elsif param == true
+      if !fired_upon? && empty?
+        "."
+      elsif !fired_upon? && !empty?
+        "S"
+      elsif empty? && fired_upon?
+        "M"
+      end
     end
   end
 end
