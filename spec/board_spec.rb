@@ -34,11 +34,21 @@ RSpec.describe Board do
       expect(@board.valid_placement?(@submarine, ["A2", "A3"])).to be true
     end
     
-    it "makes sure the coordinates are consecutive" do
-      expect(@board.valid_placement?(@cruiser, ["A1", "A2", "A4"])).to be false
-      expect(@board.valid_placement?(@submarine, ["A1", "C1"])).to be false
-      expect(@board.valid_placement?(@cruiser, ["A3", "A2", "A1"])).to be false
-      expect(@board.valid_placement?(@submarine, ["C1", "B1"])).to be false
+    context "horizontal placements" do
+      it "makes sure the coordinates are consecutive" do
+        expect(@board.valid_placement?(@cruiser, ["A1", "A2", "A4"])).to be false
+        expect(@board.valid_placement?(@submarine, ["A1", "C1"])).to be false
+        expect(@board.valid_placement?(@cruiser, ["A3", "A2", "A1"])).to be false
+        expect(@board.valid_placement?(@submarine, ["C1", "B1"])).to be false
+      end
     end
+    
+    context "diagonal placements" do
+      it "makes sure the coordinates are consecutive" do
+        expect(@board.valid_placement?(@cruiser, ["A1", "B2", "C3"])).to be false
+        expect(@board.valid_placement?(@submarine, ["C2", "D3"])).to be false
+      end
+    end
+
   end
 end
