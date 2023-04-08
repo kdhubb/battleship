@@ -64,11 +64,23 @@ RSpec.describe Cell do
       expect(@cell_1.render).to eq("M")
     end
 
-    it "will show where a ship has been placed and not fired upon" do 
+    it "will hide ships during game play" do 
       @cell_2.place_ship(@cruiser)
+
       expect(@cell_2.render).to eq(".")
+    end
+
+    it "will show all ships for debugging" do 
+      @cell_2.place_ship(@cruiser)
 
       expect(@cell_2.render(true)).to eq("S")
+    end
+
+    it "will show H if cell has been fired upon and contains a ship" do 
+      @cell_2.place_ship(@cruiser)
+      @cell_2.fire_upon
+
+      expect(@cell_2.render).to eq("H")
     end
   end
 

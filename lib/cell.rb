@@ -33,6 +33,8 @@ class Cell
         "."
       elsif empty? && fired_upon?
         "M"
+      elsif fired_upon? && !empty?
+        "H"
       end
     elsif param == true
       if !fired_upon? && empty?
@@ -41,6 +43,8 @@ class Cell
         "S"
       elsif empty? && fired_upon?
         "M"
+      elsif fired_upon? && !empty?
+        "H"
       end
     end
   end
