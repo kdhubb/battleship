@@ -44,11 +44,17 @@ RSpec.describe Board do
     end
     
     context "diagonal placements" do
-      it "makes sure the coordinates are consecutive" do
+      it "diagonal placements are invalid" do
         expect(@board.valid_placement?(@cruiser, ["A1", "B2", "C3"])).to be false
         expect(@board.valid_placement?(@submarine, ["C2", "D3"])).to be false
       end
     end
-
+    
+    context "vertical placements" do
+      it "checks both vertical and horizontal placements" do
+        expect(@board.valid_placement?(@submarine, ["A1", "A2"])).to be true
+        expect(@board.valid_placement?(@cruiser, ["B1", "C1", "D1"])).to be true
+      end
+    end
   end
 end

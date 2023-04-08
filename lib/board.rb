@@ -26,12 +26,7 @@ class Board
   end
 
   def valid_placement?(ship, coordinates)
-    validated_coordinates?(ship, coordinates) == false && ship.length == coordinates.length && horizontal_valid?(ship, coordinates)
-    # require 'pry'; binding.pry
-
-    #first see that they all are indeed valid placements
-    #ensure that the given coordinates are consecutive
-    #if both those things are true, we want to return true
+    validated_coordinates?(ship, coordinates) == false && ship.length == coordinates.length && (horizontal_valid?(ship, coordinates) || vertical_valid?(ship, coordinates))
   end
 
   def validated_coordinates?(ship, coordinates)
@@ -50,4 +45,16 @@ class Board
     con_coords[0] == coordinates
   end
 
+  def vertical_valid?(ship, coordinates)
+    con_coords = []
+      (coordinates[0].slice(0).."D").each_cons(ship.length) do |coordinate|
+        con_coords << coordinate
+      end
+      con_coords.map! do |coordinate|
+        coordinate.map! do |coordinat|
+          coordinat + coordinates[0].slice(1)
+        end  
+      end
+    con_coords[0] == coordinates
+  end
 end
