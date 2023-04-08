@@ -26,7 +26,7 @@ class Board
   end
 
   def valid_placement?(ship, coordinates)
-    validated_coordinates?(ship, coordinates) == false && ship.length == coordinates.length && (horizontal_valid?(ship, coordinates) || vertical_valid?(ship, coordinates))
+    validated_coordinates?(ship, coordinates) == true && ship.length == coordinates.length && (horizontal_valid?(ship, coordinates) || vertical_valid?(ship, coordinates))
   end
 
   def validated_coordinates?(ship, coordinates)
@@ -34,7 +34,7 @@ class Board
     coordinates.each do |coordinate|
       return_array << valid_coordinate?(coordinate)
     end
-    return_array.any?(false)
+    !return_array.any?(false)
   end
 
   def horizontal_valid?(ship, coordinates)
@@ -56,6 +56,14 @@ class Board
         end  
       end
     con_coords[0] == coordinates
+  end
+
+  def coordinates_available?(ship, coordinates)
+    return_array = []
+    coordinates.each do |coordinate|
+      return_array << @cells[coordinate].empty?
+    end
+    !return_array.any?(false)
   end
 
   def place(ship, coordinates)
