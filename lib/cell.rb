@@ -28,9 +28,9 @@ class Cell
   end
 
   def render
-    if empty? && self.fired_upon? == false
+    if empty? && !fired_upon?
       "."
-    elsif empty? && self.fired_upon? == true
+    elsif empty? && fired_upon?
       "M"
     end
   end
