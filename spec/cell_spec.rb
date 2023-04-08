@@ -81,6 +81,19 @@ RSpec.describe Cell do
       @cell_2.fire_upon
 
       expect(@cell_2.render).to eq("H")
+      expect(@cell_2.render(true)).to eq("H")
+    end
+
+    it "will show X if ship has been sunk" do 
+      @cell_2.place_ship(@cruiser)
+      @cell_2.fire_upon
+      expect(@cruiser.sunk?).to be false
+      
+      @cruiser.hit
+      @cruiser.hit
+      
+      expect(@cruiser.sunk?).to be true
+      expect(@cell_2.render).to eq("X")
     end
   end
 
