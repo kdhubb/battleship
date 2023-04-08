@@ -63,6 +63,12 @@ RSpec.describe Cell do
     it "will return a . for an empty cell not fired upon" do 
       expect(@cell_1.render).to eq(".")
     end
+
+    it "will return M if the cell has been fired upon" do 
+      @cell_1.fire_upon
+
+      expect(@cell_1.render).to eq("M")
+    end
   end
 
 end
