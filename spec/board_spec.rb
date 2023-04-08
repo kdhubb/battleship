@@ -56,5 +56,26 @@ RSpec.describe Board do
         expect(@board.valid_placement?(@cruiser, ["B1", "C1", "D1"])).to be true
       end
     end
+    
+    context "validation" do
+      it "checks both vertical and horizontal placements" do
+        expect(@board.valid_placement?(@submarine, ["D3", "D4"])).to be true
+        expect(@board.valid_placement?(@submarine, ["D4", "D5"])).to be false
+        expect(@board.valid_placement?(@submarine, ["E1", "E2"])).to be false
+        expect(@board.valid_placement?(@submarine, ["B1", "B3"])).to be false
+        expect(@board.valid_placement?(@submarine, ["B2", "B3"])).to be true
+        expect(@board.valid_placement?(@submarine, ["C1", "C2"])).to be true
+        expect(@board.valid_placement?(@submarine, ["C1", "C2", "C3"])).to be false
+        expect(@board.valid_placement?(@cruiser, ["D2", "D3", "D4"])).to be true
+        expect(@board.valid_placement?(@cruiser, ["D3", "D4", "D5"])).to be false
+        expect(@board.valid_placement?(@cruiser, ["E1", "E2", "E3"])).to be false
+        expect(@board.valid_placement?(@cruiser, ["B1", "B3", "B4"])).to be false
+        expect(@board.valid_placement?(@cruiser, ["B2", "B3", "B4"])).to be true
+        expect(@board.valid_placement?(@cruiser, ["C1", "C2", "C3"])).to be true
+        expect(@board.valid_placement?(@cruiser, ["C1", "C2", "C3", "C4"])).to be false
+        expect(@board.valid_placement?(@cruiser, ["C1", "C2"])).to be false
+        expect(@board.valid_placement?(@cruiser, ["B1", "C1", "D1"])).to be true
+      end
+    end
   end
 end
