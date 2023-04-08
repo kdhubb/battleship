@@ -108,4 +108,12 @@ RSpec.describe Board do
       expect(@board.coordinates_available?(@submarine, ["B1", "B2"])).to be true
     end
   end
+
+  describe "render" do 
+    it "will illustrate the board" do 
+      @board.place(@cruiser, ["A1", "A2", "A3"])
+
+      expect(@board.render).to eq("  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n")
+    end
+  end
 end
