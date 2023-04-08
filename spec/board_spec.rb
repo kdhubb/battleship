@@ -93,7 +93,7 @@ RSpec.describe Board do
       expect(cell_3.ship).to eq(cell_2.ship)
     end
 
-    xit "will not place overlapping ships" do 
+    it "will not place overlapping ships" do 
       @board.place(@cruiser, ["A1", "A2", "A3"])
       @submarine = Ship.new("Submarine", 2)    
       
