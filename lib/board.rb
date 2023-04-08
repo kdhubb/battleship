@@ -24,4 +24,17 @@ class Board
   def valid_coordinate?(coordinate)
     @cells.has_key?(coordinate)
   end
+
+  def valid_placement?(ship, coordinates)
+    validated_coordinates?(ship, coordinates) == false && ship.length == coordinates.length
+  end
+
+  def validated_coordinates?(ship, coordinates)
+    return_array = []
+    coordinates.each do |coordinate|
+      return_array << valid_coordinate?(coordinate)
+    end
+    return_array.any?(false)
+  end
+
 end
