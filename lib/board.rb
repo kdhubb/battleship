@@ -26,7 +26,12 @@ class Board
   end
 
   def valid_placement?(ship, coordinates)
-    validated_coordinates?(ship, coordinates) == false && ship.length == coordinates.length
+    validated_coordinates?(ship, coordinates) == false && ship.length == coordinates.length && horizontal_valid?(ship, coordinates)
+    # require 'pry'; binding.pry
+
+    #first see that they all are indeed valid placements
+    #ensure that the given coordinates are consecutive
+    #if both those things are true, we want to return true
   end
 
   def validated_coordinates?(ship, coordinates)
@@ -35,6 +40,14 @@ class Board
       return_array << valid_coordinate?(coordinate)
     end
     return_array.any?(false)
+  end
+
+  def horizontal_valid?(ship, coordinates)
+    con_coords = []
+    (coordinates[0]..coordinates[0].slice(0) + "4").each_cons(ship.length) do |coordinate|
+      con_coords << coordinate
+    end
+    con_coords[0] == coordinates
   end
 
 end
