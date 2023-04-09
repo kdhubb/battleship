@@ -87,6 +87,7 @@ RSpec.describe Cell do
     it "will show X if ship has been sunk" do 
       @cell_2.place_ship(@cruiser)
       @cell_2.fire_upon
+      
       expect(@cruiser.sunk?).to be false
       
       @cruiser.hit

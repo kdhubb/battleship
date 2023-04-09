@@ -40,13 +40,16 @@ RSpec.describe Ship do
     it "does not return a negative value for health" do
       @cruiser.hit
       @cruiser.hit
+
       expect(@cruiser.sunk?).to be false
       
       @cruiser.hit
+
       expect(@cruiser.health).to eq(0)
       expect(@cruiser.sunk?).to be true
       
       @cruiser.hit
+      
       expect(@cruiser.health).to eq(0)
       expect(@cruiser.sunk?).to be true
     end
