@@ -1,4 +1,4 @@
-module Renderable
+module Renderables
   def render(param = false)
     if param == false
       if !fired_upon?

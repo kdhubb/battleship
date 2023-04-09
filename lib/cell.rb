@@ -1,7 +1,7 @@
-require "./lib/renderable"
+require "./lib/renderables"
 
 class Cell
-  include Renderable
+  include Renderables
 
   attr_reader :coordinate,
               :ship
