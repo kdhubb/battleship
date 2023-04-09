@@ -1,5 +1,3 @@
-require "./lib/renderables"
-
 class Board
 
   attr_reader :cells
