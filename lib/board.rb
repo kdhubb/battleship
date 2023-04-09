@@ -1,4 +1,5 @@
 class Board
+
   attr_reader :cells
   def initialize
     @cells = {
@@ -74,15 +75,19 @@ class Board
     end
   end
 
-  def render
+  def render(param = false) 
     illustrated = []
     @cells.each_value do |cell|
-      illustrated << cell.render
+      illustrated << cell.render(param)
     end
     return_array = []
     illustrated.each_slice(4) do |line|
       return_array << line
     end
-    "  1 2 3 4 \nA #{return_array[0].join(" ")} \nB #{return_array[1].join(" ")} \nC #{return_array[2].join(" ")} \nD #{return_array[3].join(" ")} \n"
+    "  1 2 3 4 \n" +
+    "A #{return_array[0].join(" ")} \n" +
+    "B #{return_array[1].join(" ")} \n" +
+    "C #{return_array[2].join(" ")} \n" +
+    "D #{return_array[3].join(" ")} \n"
   end
 end
