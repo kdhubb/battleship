@@ -1,7 +1,6 @@
 require "./lib/renderables"
 
 class Board
-  # include Renderables
 
   attr_reader :cells
   def initialize
@@ -87,6 +86,10 @@ class Board
     illustrated.each_slice(4) do |line|
       return_array << line
     end
-    "  1 2 3 4 \nA #{return_array[0].join(" ")} \nB #{return_array[1].join(" ")} \nC #{return_array[2].join(" ")} \nD #{return_array[3].join(" ")} \n"
+    "  1 2 3 4 \n" +
+    "A #{return_array[0].join(" ")} \n" +
+    "B #{return_array[1].join(" ")} \n" +
+    "C #{return_array[2].join(" ")} \n" +
+    "D #{return_array[3].join(" ")} \n"
   end
 end
