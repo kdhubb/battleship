@@ -1,4 +1,13 @@
 module Renderables
+  
+  def empty?
+    @ship == nil
+  end
+
+  def fired_upon?
+    @fired_upon
+  end
+  
   def render(param = false)
     if param == false
       if !fired_upon?

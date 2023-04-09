@@ -1,4 +1,8 @@
+require "./lib/renderables"
+
 class Board
+  include Renderables
+
   attr_reader :cells
   def initialize
     @cells = {
@@ -74,15 +78,15 @@ class Board
     end
   end
 
-  def render
-    illustrated = []
-    @cells.each_value do |cell|
-      illustrated << cell.render
-    end
-    return_array = []
-    illustrated.each_slice(4) do |line|
-      return_array << line
-    end
-    "  1 2 3 4 \nA #{return_array[0].join(" ")} \nB #{return_array[1].join(" ")} \nC #{return_array[2].join(" ")} \nD #{return_array[3].join(" ")} \n"
-  end
+  # def render
+  #   illustrated = []
+  #   @cells.each_value do |cell|
+  #     illustrated << cell.render
+  #   end
+  #   return_array = []
+  #   illustrated.each_slice(4) do |line|
+  #     return_array << line
+  #   end
+  #   "  1 2 3 4 \nA #{return_array[0].join(" ")} \nB #{return_array[1].join(" ")} \nC #{return_array[2].join(" ")} \nD #{return_array[3].join(" ")} \n"
+  # end
 end
