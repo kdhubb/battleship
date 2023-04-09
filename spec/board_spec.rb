@@ -112,9 +112,20 @@ RSpec.describe Board do
   describe "render" do 
     it "will illustrate the board" do 
       @board.place(@cruiser, ["A1", "A2", "A3"])
-
+      
       expect(@board.render).to eq("  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n")
       expect(@board.render(true)).to eq("  1 2 3 4 \nA S S S . \nB . . . . \nC . . . . \nD . . . . \n")
+    end
+    
+    it "will verify other types of rendering" do 
+      @board.place(@cruiser, ["A1", "A2", "A3"])
+      @board.cells["A1"].fire_upon
+      expect(@board.render(true)).to eq("  1 2 3 4 \nA H S S . \nB . . . . \nC . . . . \nD . . . . \n")
+      expect(@board.render).to eq("  1 2 3 4 \nA H . . . \nB . . . . \nC . . . . \nD . . . . \n")
+      @board.cells["A2"].fire_upon
+      @board.cells["A3"].fire_upon
+      
+      expect(@board.render).to eq("  1 2 3 4 \nA X X X . \nB . . . . \nC . . . . \nD . . . . \n")
     end
   end
 end
