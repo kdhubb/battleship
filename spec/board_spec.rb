@@ -95,9 +95,28 @@ RSpec.describe Board do
 
     it "will not place overlapping ships" do 
       @board.place(@cruiser, ["A1", "A2", "A3"])
-      @submarine = Ship.new("Submarine", 2)    
-
+      
       expect(@board.valid_placement?(@submarine, ["A1", "B1"])).to be false
     end
   end
+  
+  describe "coordinates available" do 
+    it "will check if coordinates are available before placing ship" do 
+      @board.place(@cruiser, ["A1", "A2", "A3"])
+
+      expect(@board.coordinates_available?(@submarine, ["A1", "B1"])).to be false
+      expect(@board.coordinates_available?(@submarine, ["B1", "B2"])).to be true
+    end
+  end
+
+  describe "render" do 
+    it "will illustrate the board" do 
+      @board.place(@cruiser, ["A1", "A2", "A3"])
+
+      expect(@board.render).to eq("  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n")
+      expect(@board.render(true)).to eq("  1 2 3 4 \nA S S S . \nB . . . . \nC . . . . \nD . . . . \n")
+      # Render method should be a module. work in progress :)
+    end
+  end
 end
+

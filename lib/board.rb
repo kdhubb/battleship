@@ -26,7 +26,7 @@ class Board
   end
 
   def valid_placement?(ship, coordinates)
-    validated_coordinates?(ship, coordinates) == false && ship.length == coordinates.length && (horizontal_valid?(ship, coordinates) || vertical_valid?(ship, coordinates))
+    validated_coordinates?(ship, coordinates) == true && coordinates_available?(ship, coordinates) && ship.length == coordinates.length && (horizontal_valid?(ship, coordinates) || vertical_valid?(ship, coordinates))
   end
 
   def validated_coordinates?(ship, coordinates)
@@ -34,7 +34,7 @@ class Board
     coordinates.each do |coordinate|
       return_array << valid_coordinate?(coordinate)
     end
-    return_array.any?(false)
+    !return_array.any?(false)
   end
 
   def horizontal_valid?(ship, coordinates)
@@ -58,11 +58,31 @@ class Board
     con_coords[0] == coordinates
   end
 
+  def coordinates_available?(ship, coordinates)
+    return_array = []
+    coordinates.each do |coordinate|
+      return_array << @cells[coordinate].empty?
+    end
+    !return_array.any?(false)
+  end
+
   def place(ship, coordinates)
     if valid_placement?(ship, coordinates)
       coordinates.each do |coordinate|
         @cells[coordinate].place_ship(ship)
       end
     end
+  end
+
+  def render
+    illustrated = []
+    @cells.each_value do |cell|
+      illustrated << cell.render
+    end
+    return_array = []
+    illustrated.each_slice(4) do |line|
+      return_array << line
+    end
+    "  1 2 3 4 \nA #{return_array[0].join(" ")} \nB #{return_array[1].join(" ")} \nC #{return_array[2].join(" ")} \nD #{return_array[3].join(" ")} \n"
   end
 end
