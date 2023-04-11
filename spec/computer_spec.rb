@@ -29,4 +29,17 @@ RSpec.describe Computer do
       expect(@macbook.vertical_valid_placement(@macbook.cruiser).length).to eq(8)
     end
   end
+  
+  describe "all_valid_placements" do
+    it "has all valid placements for computer to pull from" do
+      expect(@macbook.all_valid_placements(@macbook.submarine)).to eq(24)
+    end
+  end
+  
+  describe "random_ship_placment" do
+    it "can place both ships randomly without overlapping" do
+
+      expect(@macbook.random_ship_placement).to be_an(Array)
+    end
+  end
 end
