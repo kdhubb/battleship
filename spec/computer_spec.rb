@@ -15,4 +15,13 @@ RSpec.describe Computer do
       expect(@macbook.board.cells["A1"].ship).to eq(@macbook.cruiser)
     end
   end
+  
+  describe "horizontal_valid_placement" do
+    it "creates valid horizontal placements for ships" do
+      expect(@macbook.horizontal_valid_placement(@macbook.submarine).length).to eq(12)
+      expect(@macbook.horizontal_valid_placement(@macbook.cruiser).length).to eq(8)
+    end
+  end
+
+
 end
