@@ -55,4 +55,12 @@ RSpec.describe Computer do
       expect(@macbook.board.cells.values.to_s.include?("Submarine")).to be true
     end
   end
+  
+  describe "cell_to_fire_at" do
+    it "chooses a cell to fire at from cells it has not already fired on based on the players board" do
+      user = Player.new
+      
+      expect(@macbook.cell_to_fire_at(user)).to be_a(String)
+    end
+  end
 end

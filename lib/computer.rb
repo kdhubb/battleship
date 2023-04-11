@@ -78,4 +78,13 @@ class Computer
     end
     vertical_placements
   end
+
+  def cell_to_fire_at(player)
+    available_cells = []
+    player.board.cells.select do |input, status|
+      status.fired_upon? == false
+      available_cells << input
+    end
+    available_cells.sample
+  end
 end
