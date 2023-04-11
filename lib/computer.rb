@@ -29,16 +29,25 @@ class Computer
     horizontal_placements
   end
 
-  def vertical_valid?(ship, coordinates)
-    con_coords = []
-      (coordinates[0].slice(0).."D").each_cons(ship.length) do |coordinate|
-        con_coords << coordinate
+  def vertical_valid_placement(ship)
+    vertical_placements = []
+    ("A".."D").each_cons(ship.length) do |array|
+      array.map! do |letter|
+        letter.ljust(2, "1")
       end
-      con_coords.map! do |coordinate|
-        coordinate.map! do |coordinat|
-          coordinat + coordinates[0].slice(1)
-        end  
-      end
-    con_coords[0] == coordinates
+      vertical_placements << array
+    end
+    # Modify lower part of method to match
+    # require 'pry'; binding.pry
+    # ("A2".."D2").each_cons(ship.length) do |valid|
+    #   vertical_placements << valid
+    # end
+    # ("A3".."D3").each_cons(ship.length) do |valid|
+    #   vertical_placements << valid
+    # end
+    # ("A4".."D4").each_cons(ship.length) do |valid|
+    #   vertical_placements << valid
+    # end
+    # vertical_placements
   end
 end
