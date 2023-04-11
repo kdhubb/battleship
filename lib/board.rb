@@ -25,9 +25,18 @@ class Board
   def valid_coordinate?(coordinate)
     @cells.has_key?(coordinate)
   end
-
+  # Decide on talking points
   def valid_placement?(ship, coordinates)
-    validated_coordinates?(ship, coordinates) == true && coordinates_available?(ship, coordinates) && ship.length == coordinates.length && (horizontal_valid?(ship, coordinates) || vertical_valid?(ship, coordinates))
+    validated_coordinates?(ship, coordinates) && coordinates_available?(ship, coordinates) && valid_ship_length?(ship, coordinates) && general_valid?(ship, coordinates)
+  end
+
+  # Add test
+  def general_valid?(ship, coordinates)
+    (horizontal_valid?(ship, coordinates) || vertical_valid?(ship, coordinates))
+  end
+  # Add test
+  def valid_ship_length?(ship, coordinates)
+    ship.length == coordinates.length
   end
 
   def validated_coordinates?(ship, coordinates)
