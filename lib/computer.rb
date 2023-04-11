@@ -37,17 +37,24 @@ class Computer
       end
       vertical_placements << array
     end
-    # Modify lower part of method to match
-    # require 'pry'; binding.pry
-    # ("A2".."D2").each_cons(ship.length) do |valid|
-    #   vertical_placements << valid
-    # end
-    # ("A3".."D3").each_cons(ship.length) do |valid|
-    #   vertical_placements << valid
-    # end
-    # ("A4".."D4").each_cons(ship.length) do |valid|
-    #   vertical_placements << valid
-    # end
-    # vertical_placements
+    ("A".."D").each_cons(ship.length) do |array|
+      array.map! do |letter|
+        letter.ljust(2, "2")
+      end
+      vertical_placements << array
+    end
+    ("A".."D").each_cons(ship.length) do |array|
+      array.map! do |letter|
+        letter.ljust(2, "3")
+      end
+      vertical_placements << array
+    end
+    ("A".."D").each_cons(ship.length) do |array|
+      array.map! do |letter|
+        letter.ljust(2, "4")
+      end
+      vertical_placements << array
+    end
+    vertical_placements
   end
 end
