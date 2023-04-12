@@ -22,6 +22,15 @@ RSpec.describe Turn do
       @player.board.place(@player.cruiser, ["A1", "A2", "A3"])
       @player.board.place(@player.submarine, ["B1", "C1"])
       @computer.ship_placement
+
+      expect(@turn.render_boards(@computer, @player, true)).to be nil
+    end
+  end
+  
+  describe "computer_shot" do 
+    it "fires randomly on player board" do 
+      @turn.computer_shot(@player)
+      
       expect(@turn.render_boards(@computer, @player, true)).to be nil
     end
   end

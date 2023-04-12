@@ -8,8 +8,8 @@ class Turn
     puts board
   end
 
-  def computer_shot
-    
+  def computer_fire(computer, player)
+    computer.computer_shot(player)
   end
 
   def player_shot

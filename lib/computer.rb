@@ -87,4 +87,8 @@ class Computer
     end
     available_cells.sample
   end
+
+  def computer_shot(player)
+    player.board.cells[cell_to_fire_at(player)].fire_upon
+  end
 end
