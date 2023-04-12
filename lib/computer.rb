@@ -13,7 +13,7 @@ class Computer
   def ship_placement
     random_ship_coords
     @board.place(@cruiser, @cruiser_coords)
-    @board.place(@submarine, @submarine_coords)
+    return @board.place(@submarine, @submarine_coords)
   end
 
   def random_ship_coords

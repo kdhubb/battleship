@@ -3,8 +3,8 @@ require "spec_helper"
 RSpec.describe Turn do 
   before(:each) do
     @turn = Turn.new
-    @user = Player.new
-    @macbook = Computer.new
+    @player = Player.new
+    @computer = Computer.new
   end
 
   describe "initialize" do 
@@ -15,9 +15,14 @@ RSpec.describe Turn do
 
   describe "render_boards" do 
     it "displays player and computer boards at the start of a turn" do 
-      require 'pry'; binding.pry
-      expect(@turn.render_boards(@macbook, @user)).to be nil
+      expect(@turn.render_boards(@computer, @player)).to be nil
+    end
 
+    it "displays player and computer boards during a turn" do 
+      @player.board.place(@player.cruiser, ["A1", "A2", "A3"])
+      @player.board.place(@player.submarine, ["B1", "C1"])
+      @computer.ship_placement
+      expect(@turn.render_boards(@computer, @player, true)).to be nil
     end
   end
 end
