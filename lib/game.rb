@@ -7,7 +7,7 @@ attr_reader :player,
   end
 
   def start 
-    
+    # message for invalid ship placement
   end
 
   def winner

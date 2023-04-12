@@ -39,21 +39,34 @@ RSpec.describe Turn do
   
   describe "player_fire" do 
     it "fires randomly on player board" do 
-      @turn.player_fire(@computer, "A1")
-      @turn.player_fire(@computer, "B2")
-      @turn.player_fire(@computer, "D3")
+      @turn.computer_fire(@computer, @player)
+      @turn.player_fire(@player, @computer, "A1")
+      @turn.computer_fire(@computer, @player)
+      @turn.player_fire(@player, @computer, "B2")
+      @turn.computer_fire(@computer, @player)
+      @turn.player_fire(@player, @computer, "D3")
       
       expect(@turn.render_boards(@computer, @player, true)).to be nil
     end
     
+    it "prompts user to enter valid coordinate if invalid coordinate is entered" do 
+      @turn.computer_fire(@computer, @player)
+      @turn.player_fire(@player, @computer, "B2")
+      
+      # expect(@turn.render_boards(@computer, @player, true).to_s.include?("M")).to be true
+      # unsure how to test for this ^. Should we test in pry or return a string value?
+      @turn.computer_fire(@computer, @player)
+      @turn.player_fire(@player, @computer, "E1")
+    end
+    
     it "lists two lines of results after player and computer have fired" do 
       @turn.computer_fire(@computer, @player)
-      @turn.player_fire(@computer, "A1")
+      @turn.player_fire(@player, @computer, "A1")
       @turn.computer_fire(@computer, @player)
-      @turn.player_fire(@computer, "B1")
+      @turn.player_fire(@player, @computer, "B1")
       @turn.computer_fire(@computer, @player)
       
-      expect(@turn.player_fire(@computer, "B3")).to be nil
+      expect(@turn.player_fire(@player, @computer, "B3")).to be nil
     end
   end
   
