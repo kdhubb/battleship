@@ -36,4 +36,26 @@ RSpec.describe Turn do
       expect(@turn.render_boards(@computer, @player, true)).to be nil
     end
   end
+  
+  describe "player_fire" do 
+    it "fires randomly on player board" do 
+      @turn.player_fire(@computer, "A1")
+      @turn.player_fire(@computer, "B2")
+      @turn.player_fire(@computer, "D3")
+      
+      expect(@turn.render_boards(@computer, @player, true)).to be nil
+    end
+  end
+
+  #  might want to test further later on (H, X, S, etc.)
+
+  describe "results" do 
+    it "lists two lines of results after player and computer have fired" do 
+      @turn.computer_fire(@computer, @player)
+      @turn.player_fire(@computer, "A1")
+
+      expect(@turn.results).to be_a(String)
+    end
+  end
+  
 end
