@@ -14,12 +14,8 @@ class Turn
 
   def player_fire(computer, input)
     computer.board.cells[input].fire_upon
-    "Your shot on #{input} was a miss. \n" +
-    "My shot on C1 was a miss. \n"
+    results = "Your shot on #{input} was a miss. \n" +
+    "My shot on #{computer.cells_fired_upon.last} was a miss. \n"
+    puts results
   end
-
-  def results
-   
-  end
-
 end

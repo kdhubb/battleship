@@ -1,13 +1,16 @@
 class Computer
   attr_reader :board,
               :cruiser,
-              :submarine
+              :submarine,
+              :cells_fired_upon
   def initialize
     @board = Board.new
     @cruiser = Ship.new("Cruiser", 3)
     @submarine = Ship.new("Submarine", 2)
     @cruiser_coords = nil
     @submarine_coords = nil
+    @cells_fired_upon = []
+    # test me ^
   end
 
   def ship_placement
@@ -89,6 +92,8 @@ class Computer
   end
 
   def computer_shot(player)
-    player.board.cells[cell_to_fire_at(player)].fire_upon
+    cell_shot = cell_to_fire_at(player)
+    player.board.cells[cell_shot].fire_upon
+    @cells_fired_upon << cell_shot
   end
 end
