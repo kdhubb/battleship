@@ -66,7 +66,6 @@ RSpec.describe Turn do
       @turn.player_fire(@player, @computer, "B1")
       
       expect(@turn.render_boards(@computer, @player, true)).to be nil
-      require 'pry'; binding.pry
     end
   end
   #  might want to test further later on (H, X, S, etc.)
