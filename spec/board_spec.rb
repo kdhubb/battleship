@@ -154,15 +154,19 @@ RSpec.describe Board do
       expect(@board.general_valid?(@cruiser, ["C1", "A2", "A3"])).to be false
       expect(@board.general_valid?(@cruiser, ["A1", "B1", "C1"])).to be true
       expect(@board.general_valid?(@cruiser, ["A1", "B1", "D1"])).to be false
+      expect(@board.general_valid?(@submarine, ["A1", "A2"])).to be true
+      expect(@board.general_valid?(@submarine, ["C1", "A2"])).to be false
+      expect(@board.general_valid?(@submarine, ["A1", "B1"])).to be true
+      expect(@board.general_valid?(@submarine, ["A1", "C1"])).to be false
     end
   end
   
   describe "valid_ship_length?" do
     it "that the ship length provided is valid" do
-      expect(@board.general_valid?(@cruiser, ["A1", "A2", "A3"])).to be true
-      expect(@board.general_valid?(@cruiser, ["C1", "A2", "A3"])).to be false
-      expect(@board.general_valid?(@cruiser, ["A1", "B1", "C1"])).to be true
-      expect(@board.general_valid?(@cruiser, ["A1", "B1", "D1"])).to be false
+      expect(@board.valid_ship_length?(@cruiser, ["A1", "A2", "A3"])).to be true
+      expect(@board.valid_ship_length?(@cruiser, ["A2", "A3"])).to be false
+      expect(@board.valid_ship_length?(@submarine, ["A1", "B1"])).to be true
+      expect(@board.valid_ship_length?(@submarine, ["A1"])).to be false
     end
   end
 end
