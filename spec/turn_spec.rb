@@ -45,15 +45,28 @@ RSpec.describe Turn do
       
       expect(@turn.render_boards(@computer, @player, true)).to be nil
     end
-
+    
     it "lists two lines of results after player and computer have fired" do 
       @turn.computer_fire(@computer, @player)
       @turn.player_fire(@computer, "A1")
       @turn.computer_fire(@computer, @player)
       @turn.player_fire(@computer, "B1")
       @turn.computer_fire(@computer, @player)
-  
+      
       expect(@turn.player_fire(@computer, "B3")).to be nil
+    end
+  end
+  
+  describe "render all types of computer and player shots" do 
+    it "will display all types of actions on player and computer boards" do 
+      @player.board.place(@player.cruiser, ["A1", "A2", "A3"])
+      @player.board.place(@player.submarine, ["B1", "C1"])
+      @computer.ship_placement
+      @turn.computer_fire(@computer, @player)
+      @turn.player_fire(@player, @computer, "B1")
+      
+      expect(@turn.render_boards(@computer, @player, true)).to be nil
+      require 'pry'; binding.pry
     end
   end
   #  might want to test further later on (H, X, S, etc.)
