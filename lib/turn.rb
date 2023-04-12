@@ -1,23 +1,21 @@
 class Turn
-  attr_reader :player,
-              :macbook
-  def initialize(player, macbook)
-    @player = player
-    @computer = computer
+
+  def render_boards
+   board = "============COMPUTER BOARD============ \n" +
+   "=============PLAYER BOARD============= \n"
+    puts board
   end
 
+  def computer_shot
 
+  end
 
-def basic
+  def player_shot
 
-end
+  end
 
-def winner
+  def results
 
-end
-
-def end
-
-end
+  end
 
 end

@@ -10,8 +10,13 @@ RSpec.describe Turn do
   describe "initialize" do 
     it "exists" do 
       expect(@turn).to be_a(Turn)
-      expect(@turn.player).to be_a(Player)
-      expect(@turn.macbook).to be_a(Computer)
+    end
+  end
+
+  describe "render_boards" do 
+    it "displays player and computer boards at the start of a turn" do 
+      
+      expect(@turn.render_boards).to be nil
     end
   end
 end

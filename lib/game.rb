@@ -6,7 +6,15 @@ attr_reader :player,
     @computer = Computer.new
   end
 
-  def setup 
+  def start 
     
+  end
+
+  def winner
+
+  end
+  
+  def end
+  
   end
 end
