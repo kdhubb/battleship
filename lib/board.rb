@@ -81,6 +81,9 @@ class Board
       coordinates.each do |coordinate|
         @cells[coordinate].place_ship(ship)
       end
+      "Your ships have been placed"
+    else
+      "Please enter valid coordinates" 
     end
   end
 
