@@ -4,7 +4,7 @@ class Turn
     "============COMPUTER BOARD============ \n" +
     computer.board.render(param) +
     "=============PLAYER BOARD============= \n" +
-    player.board.render(param)
+    player.board.render(true)
   end
 
   def computer_fire(computer, player)
