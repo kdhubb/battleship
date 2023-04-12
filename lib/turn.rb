@@ -3,16 +3,21 @@ class Turn
               :macbook
   def initialize(player, macbook)
     @player = player
-    @macbook = macbook
+    @computer = computer
   end
 
-def setup 
-end
+
 
 def basic
+
 end
 
 def winner
+
+end
+
+def end
+
 end
 
 end

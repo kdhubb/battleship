@@ -3,6 +3,8 @@ require "spec_helper"
 RSpec.describe Turn do 
   before(:each) do
     @turn = Turn.new
+    @user = Player.new
+    @macbook = Computer.new
   end
 
   describe "initialize" do 
