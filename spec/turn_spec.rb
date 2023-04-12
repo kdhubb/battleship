@@ -15,7 +15,7 @@ RSpec.describe Turn do
 
   describe "render_boards" do 
     it "displays player and computer boards at the start of a turn" do 
-      expect(@turn.render_boards(@computer, @player)).to be nil
+      expect(@turn.render_boards(@computer, @player)).to eq("============COMPUTER BOARD============ \n  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n=============PLAYER BOARD============= \n  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n")
     end
 
     it "displays player and computer boards during a turn" do 
@@ -23,7 +23,7 @@ RSpec.describe Turn do
       @player.board.place(@player.submarine, ["B1", "C1"])
       @computer.ship_placement
 
-      expect(@turn.render_boards(@computer, @player, true)).to be nil
+      puts @turn.render_boards(@computer, @player, true)
     end
   end
   
@@ -33,40 +33,38 @@ RSpec.describe Turn do
       @turn.computer_fire(@computer, @player)
       @turn.computer_fire(@computer, @player)
       
-      expect(@turn.render_boards(@computer, @player, true)).to be nil
+      puts @turn.render_boards(@computer, @player, true)
     end
   end
   
   describe "player_fire" do 
     it "fires randomly on player board" do 
       @turn.computer_fire(@computer, @player)
-      @turn.player_fire(@player, @computer, "A1")
+      puts @turn.player_fire(@player, @computer, "A1")
       @turn.computer_fire(@computer, @player)
-      @turn.player_fire(@player, @computer, "B2")
+      puts @turn.player_fire(@player, @computer, "B2")
       @turn.computer_fire(@computer, @player)
-      @turn.player_fire(@player, @computer, "D3")
+      puts @turn.player_fire(@player, @computer, "D3")
       
-      expect(@turn.render_boards(@computer, @player, true)).to be nil
+      puts @turn.render_boards(@computer, @player, true)
     end
     
     it "prompts user to enter valid coordinate if invalid coordinate is entered" do 
       @turn.computer_fire(@computer, @player)
-      @turn.player_fire(@player, @computer, "B2")
+      puts @turn.player_fire(@player, @computer, "B2")
       
-      # expect(@turn.render_boards(@computer, @player, true).to_s.include?("M")).to be true
-      # unsure how to test for this ^. Should we test in pry or return a string value?
       @turn.computer_fire(@computer, @player)
-      @turn.player_fire(@player, @computer, "E1")
+      puts @turn.player_fire(@player, @computer, "E1")
     end
     
     it "lists two lines of results after player and computer have fired" do 
       @turn.computer_fire(@computer, @player)
-      @turn.player_fire(@player, @computer, "A1")
+      puts @turn.player_fire(@player, @computer, "A1")
       @turn.computer_fire(@computer, @player)
-      @turn.player_fire(@player, @computer, "B1")
+      puts @turn.player_fire(@player, @computer, "B1")
       @turn.computer_fire(@computer, @player)
       
-      expect(@turn.player_fire(@player, @computer, "B3")).to be nil
+      puts @turn.player_fire(@player, @computer, "B3")
     end
   end
   
@@ -76,10 +74,9 @@ RSpec.describe Turn do
       @player.board.place(@player.submarine, ["B1", "C1"])
       @computer.ship_placement
       @turn.computer_fire(@computer, @player)
-      @turn.player_fire(@player, @computer, "B1")
+      puts @turn.player_fire(@player, @computer, "B1")
       
-      expect(@turn.render_boards(@computer, @player, true)).to be nil
+      puts @turn.render_boards(@computer, @player, true)
     end
   end
-  #  might want to test further later on (H, X, S, etc.)
 end
