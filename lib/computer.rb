@@ -1,19 +1,22 @@
 class Computer
   attr_reader :board,
               :cruiser,
-              :submarine
+              :submarine,
+              :cells_fired_upon
   def initialize
     @board = Board.new
     @cruiser = Ship.new("Cruiser", 3)
     @submarine = Ship.new("Submarine", 2)
     @cruiser_coords = nil
     @submarine_coords = nil
+    @cells_fired_upon = []
+    # test me ^
   end
 
   def ship_placement
     random_ship_coords
     @board.place(@cruiser, @cruiser_coords)
-    @board.place(@submarine, @submarine_coords)
+    return @board.place(@submarine, @submarine_coords)
   end
 
   def random_ship_coords
@@ -86,5 +89,11 @@ class Computer
       available_cells << input
     end
     available_cells.sample
+  end
+
+  def computer_shot(player)
+    cell_shot = cell_to_fire_at(player)
+    player.board.cells[cell_shot].fire_upon
+    @cells_fired_upon << cell_shot
   end
 end

@@ -63,4 +63,16 @@ RSpec.describe Computer do
       expect(@macbook.cell_to_fire_at(user)).to be_a(String)
     end
   end
+
+  describe "computer_shot" do 
+    it "fires randomly upon a player's board" do 
+      user = Player.new
+      puts user.board.render
+
+      @macbook.computer_shot(user)
+      @macbook.computer_shot(user)
+
+      puts user.board.render
+    end
+  end
 end
