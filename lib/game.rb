@@ -20,12 +20,10 @@ attr_reader :player,
     if start_response == "p"
       setup
     elsif start_response == "q"
-      quit
+      puts "Thanks for playing"
     else
-      "Enter p to play or q to quit."
       start
     end
-    #until start response eqquals p or q....
   end
 
   def setup
@@ -44,11 +42,11 @@ attr_reader :player,
       @player.board.place(@player.cruiser, raw_input)
       puts @player.board.render(true)
       player_submarine_placement
+    else
+      #expand on these valid directions later
+      puts "You must enter valid coordinates"
+      player_cruiser_placement
     end
-    ## Still need sad path for invalid coordinates
-    # until @player.board.valid_placement?(@player.cruiser, raw_input)
-    #   @player.board.place(@player.cruiser, raw_input)
-    # end
   end
   
   def player_submarine_placement
@@ -58,11 +56,10 @@ attr_reader :player,
       @player.board.place(@player.submarine, raw_input)
       puts @player.board.render(true)
       begin_firing
+    else
+      puts "You must enter valid coordinates"
+      player_submarine_placement
     end
-    ## Still need sad path for invalid coordinates
-    # until @player.board.valid_placement?(@player.cruiser, raw_input)
-    #   @player.board.place(@player.cruiser, raw_input)
-    # end
   end
 
   def begin_firing
@@ -70,15 +67,27 @@ attr_reader :player,
     puts @turn.render_boards(@computer, @player)
     puts "Enter the coordinate for your shot:"
     shot_input = gets.chomp.upcase
-    @turn.computer_fire(@computer, @player)
-    @turn.player_fire(@player, @computer, shot_input)
+    if @computer.board.valid_coordinate?(shot_input)
+      @turn.computer_fire(@computer, @player)
+      @turn.player_fire(@player, @computer, shot_input)
+      winner
+    elsif !@computer.board.valid_coordinate?(shot_input) || @computer.board.cells[shot_input].fired_upon?
+      @turn.player_fire(@player, @computer, shot_input)
+      begin_firing
+    end
   end
 
   def winner
-
-  end
-  
-  def quit
-  
+    if (@player.cruiser.sunk? && @player.submarine.sunk?) 
+      puts "You lost! Computer was the winner!"
+      #sleep to delay to next start of game?
+      start
+    elsif (@computer.cruiser.sunk? && @computer.submarine.sunk?)
+      puts "You won!"
+      #sleep to delay to next start of game?
+      start
+    else
+      begin_firing
+    end
   end
 end

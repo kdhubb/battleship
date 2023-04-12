@@ -30,7 +30,6 @@ class Board
     validated_coordinates?(ship, coordinates) && coordinates_available?(ship, coordinates) && valid_ship_length?(ship, coordinates) && general_valid?(ship, coordinates)
   end
 
-
   def general_valid?(ship, coordinates)
     (horizontal_valid?(ship, coordinates) || vertical_valid?(ship, coordinates))
   end
@@ -81,9 +80,6 @@ class Board
       coordinates.each do |coordinate|
         @cells[coordinate].place_ship(ship)
       end
-      "Your ships have been placed"
-    else
-      "Please enter valid coordinates" 
     end
   end
 
