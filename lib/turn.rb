@@ -1,8 +1,10 @@
 class Turn
 
-  def render_boards
-   board = "============COMPUTER BOARD============ \n" +
-   "=============PLAYER BOARD============= \n"
+  def render_boards(computer, player)
+    board = "============COMPUTER BOARD============ \n" +
+    computer.board.render +
+    "=============PLAYER BOARD============= \n" +
+    player.board.render
     puts board
   end
 

@@ -15,8 +15,9 @@ RSpec.describe Turn do
 
   describe "render_boards" do 
     it "displays player and computer boards at the start of a turn" do 
-      
-      expect(@turn.render_boards).to be nil
+      require 'pry'; binding.pry
+      expect(@turn.render_boards(@macbook, @user)).to be nil
+
     end
   end
 end
