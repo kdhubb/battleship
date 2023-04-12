@@ -27,9 +27,11 @@ RSpec.describe Turn do
     end
   end
   
-  describe "computer_shot" do 
+  describe "computer_fire" do 
     it "fires randomly on player board" do 
-      @turn.computer_shot(@player)
+      @turn.computer_fire(@computer, @player)
+      @turn.computer_fire(@computer, @player)
+      @turn.computer_fire(@computer, @player)
       
       expect(@turn.render_boards(@computer, @player, true)).to be nil
     end
