@@ -11,7 +11,7 @@ class Turn
   def computer_fire(computer, player)
     computer.computer_shot(player)
   end
-
+# potentially move results into its own method keeping track of inputs, like computer fired upon.
   def player_fire(player, computer, input)
     computer.board.cells[input].fire_upon
     player_result = computer.board.cells[input].render_result
@@ -20,6 +20,4 @@ class Turn
     "My shot on #{computer.cells_fired_upon.last} #{computer_result}. \n"
     puts results
   end
-
- 
 end
