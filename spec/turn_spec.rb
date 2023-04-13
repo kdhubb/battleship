@@ -38,7 +38,7 @@ RSpec.describe Turn do
   end
   
   describe "player_fire" do 
-    it "fires randomly on player board" do 
+    it "fires randomly on computer board" do 
       @turn.computer_fire(@computer, @player)
       puts @turn.player_fire(@player, @computer, "A1")
       @turn.computer_fire(@computer, @player)
