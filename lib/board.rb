@@ -1,5 +1,4 @@
 class Board
-
   attr_reader :cells
   def initialize
     @cells = {
@@ -27,7 +26,10 @@ class Board
   end
  
   def valid_placement?(ship, coordinates)
-    validated_coordinates?(ship, coordinates) && coordinates_available?(ship, coordinates) && valid_ship_length?(ship, coordinates) && general_valid?(ship, coordinates)
+    validated_coordinates?(ship, coordinates) && 
+    coordinates_available?(ship, coordinates) && 
+    valid_ship_length?(ship, coordinates) && 
+    general_valid?(ship, coordinates)
   end
 
   def general_valid?(ship, coordinates)
@@ -92,10 +94,10 @@ class Board
     illustrated.each_slice(4) do |line|
       return_array << line
     end
-    "  1 2 3 4 \n" +
-    "A #{return_array[0].join(" ")} \n" +
-    "B #{return_array[1].join(" ")} \n" +
-    "C #{return_array[2].join(" ")} \n" +
-    "D #{return_array[3].join(" ")} \n"
+    "            1 2 3 4 \n" +
+    "          A #{return_array[0].join(" ")} \n" +
+    "          B #{return_array[1].join(" ")} \n" +
+    "          C #{return_array[2].join(" ")} \n" +
+    "          D #{return_array[3].join(" ")} \n"
   end
 end
