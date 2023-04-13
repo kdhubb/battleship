@@ -9,3 +9,4 @@ We are starting!!
 - Line breaks and spacing for readability
 - Scaling - methods in computer randomization will more easily scale to larger boards
   - Expand on all methods where we randomize
+- Gets tests

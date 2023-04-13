@@ -21,7 +21,7 @@ class Cell
     end
     @fired_upon = true
   end
-# add a test for render result
+  
   def render_result
     if fired_upon? && !empty? && @ship.sunk?
       "sunk my ship"
