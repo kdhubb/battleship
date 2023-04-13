@@ -1,3 +1,4 @@
+## Anywhere there is text, add line breaks so that instructions don't get lost
 class Game
 attr_reader :player, 
             :computer
@@ -37,20 +38,22 @@ attr_reader :player,
   
   def player_cruiser_placement
     puts "Enter the squares for the Cruiser (3 spaces):"
+    # Give more explicit instructions ^ on what valid coordinates look lik
     raw_input = gets.upcase.split(" ")
     if @player.board.valid_placement?(@player.cruiser, raw_input)
       @player.board.place(@player.cruiser, raw_input)
       puts @player.board.render(true)
       player_submarine_placement
     else
-      #expand on these valid directions later
       puts "You must enter valid coordinates"
+      # Give more explicit instructions ^ on what valid coordinates look lik
       player_cruiser_placement
     end
   end
   
   def player_submarine_placement
     puts "Enter the squares for the Submarine (2 spaces):"
+    # Give more explicit instructions ^ on what valid coordinates look lik
     raw_input = gets.upcase.split(" ")
     if @player.board.valid_placement?(@player.submarine, raw_input)
       @player.board.place(@player.submarine, raw_input)
@@ -58,6 +61,7 @@ attr_reader :player,
       begin_firing
     else
       puts "You must enter valid coordinates"
+      # Give more explicit instructions ^ on what valid coordinates look lik
       player_submarine_placement
     end
   end
