@@ -1,7 +1,7 @@
 class Turn
   def render_boards(computer, player, param = false)
     "\n ============COMPUTER BOARD============ \n" +
-    computer.board.render(true) +
+    computer.board.render(param) +
     "\n =============PLAYER BOARD============= \n" +
     player.board.render(true)
   end
