@@ -15,7 +15,7 @@ RSpec.describe Turn do
 
   describe "render_boards" do 
     it "displays player and computer boards at the start of a turn" do 
-      expect(@turn.render_boards(@computer, @player)).to eq("============COMPUTER BOARD============ \n  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n=============PLAYER BOARD============= \n  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n")
+      expect(@turn.render_boards(@computer, @player)).to eq("\n ============COMPUTER BOARD============ \n            1 2 3 4 \n          A . . . . \n          B . . . . \n          C . . . . \n          D . . . . \n\n =============PLAYER BOARD============= \n            1 2 3 4 \n          A . . . . \n          B . . . . \n          C . . . . \n          D . . . . \n")
     end
 
     it "displays player and computer boards during a turn" do 

@@ -4,7 +4,6 @@ RSpec.describe Cell do
   before(:each) do 
     @cell = Cell.new("B4")
     @cruiser = Ship.new("Cruiser", 3)
-    
   end
 
   describe "coordinate" do 
@@ -97,5 +96,19 @@ RSpec.describe Cell do
       expect(@cell_2.render).to eq("X")
     end
   end
-
+  
+  describe "render_result" do
+    it "displays results" do
+      @cell_2.place_ship(@cruiser)
+      @cell_2.fire_upon
+      
+      expect(@cell_2.render_result).to eq("was a hit")
+      
+      @cruiser.hit
+      @cruiser.hit
+      
+      expect(@cruiser.sunk?).to be true
+      expect(@cell_2.render_result).to eq("sunk my ship")
+    end
+  end
 end

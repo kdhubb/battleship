@@ -10,7 +10,6 @@ class Computer
     @cruiser_coords = nil
     @submarine_coords = nil
     @cells_fired_upon = []
-    # test me ^
   end
 
   def ship_placement
@@ -60,20 +59,14 @@ class Computer
         letter.ljust(2, "1")
       end
       vertical_placements << array
-    end
-    ("A".."D").each_cons(ship.length) do |array|
       array.map! do |letter|
-        letter.ljust(2, "2")
+          letter.ljust(2, "2")
       end
       vertical_placements << array
-    end
-    ("A".."D").each_cons(ship.length) do |array|
       array.map! do |letter|
         letter.ljust(2, "3")
       end
       vertical_placements << array
-    end
-    ("A".."D").each_cons(ship.length) do |array|
       array.map! do |letter|
         letter.ljust(2, "4")
       end

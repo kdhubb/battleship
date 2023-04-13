@@ -9,6 +9,7 @@ RSpec.describe Computer do
     it "exists" do
       expect(@macbook).to be_a(Computer)
       expect(@macbook.board).to be_a(Board)
+      expect(@macbook.cells_fired_upon).to eq([])
       
       @macbook.board.place(@macbook.cruiser, ["A1", "A2", "A3"])
       
@@ -67,12 +68,13 @@ RSpec.describe Computer do
   describe "computer_shot" do 
     it "fires randomly upon a player's board" do 
       user = Player.new
-      puts user.board.render
+
+      expect(@macbook.cells_fired_upon).to eq([])
 
       @macbook.computer_shot(user)
       @macbook.computer_shot(user)
 
-      puts user.board.render
+      expect(@macbook.cells_fired_upon.length).to eq(2)
     end
   end
 end
