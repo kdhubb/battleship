@@ -1,18 +1,5 @@
 ![its_working_star_wars](https://user-images.githubusercontent.com/118634754/231820290-a1aa78b5-840a-49aa-9424-4929a96a8323.gif)
 
-# Talking Points
-
-- Formatting on board
-  - Added spaces so that board was more clearly readable from side of terminal
-  - Limitations without frontend?
-    - Took liberties on formatting which impacted test readability and maybe convention in code? but made for better readibility during gameplay
-- Line breaks and spacing for readability
-- Scaling - methods in computer randomization will more easily scale to larger boards
-  - Expand on all methods where we randomize
-- Gets tests
-- Buggy computer fire method (submarine placement bug).
-- Turn class, can methods go in other classes?
-
 # Iteration 3
 
 *Iteration 3 did not provide an interaction pattern. How did you approach designing this iteration? If you did not get to Iteration 3, reflect on how you think you would’ve approached the design and problem solving process.*
