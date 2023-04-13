@@ -10,7 +10,6 @@ class Computer
     @cruiser_coords = nil
     @submarine_coords = nil
     @cells_fired_upon = []
-    # test me ^
   end
 
   def ship_placement
