@@ -114,21 +114,21 @@ RSpec.describe Board do
     it "will illustrate the board" do 
       @board.place(@cruiser, ["A1", "A2", "A3"])
       
-      expect(@board.render).to eq("  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n")
-      expect(@board.render(true)).to eq("  1 2 3 4 \nA S S S . \nB . . . . \nC . . . . \nD . . . . \n")
+      expect(@board.render).to eq("            1 2 3 4 \n          A . . . . \n          B . . . . \n          C . . . . \n          D . . . . \n")
+      expect(@board.render(true)).to eq("            1 2 3 4 \n          A S S S . \n          B . . . . \n          C . . . . \n          D . . . . \n")
     end
     
     it "will verify hits and sinks in game play and debugging" do 
       @board.place(@cruiser, ["A1", "A2", "A3"])
       @board.cells["A1"].fire_upon
       
-      expect(@board.render(true)).to eq("  1 2 3 4 \nA H S S . \nB . . . . \nC . . . . \nD . . . . \n")
-      expect(@board.render).to eq("  1 2 3 4 \nA H . . . \nB . . . . \nC . . . . \nD . . . . \n")
+      expect(@board.render(true)).to eq("            1 2 3 4 \n          A H S S . \n          B . . . . \n          C . . . . \n          D . . . . \n")
+      expect(@board.render).to eq("            1 2 3 4 \n          A H . . . \n          B . . . . \n          C . . . . \n          D . . . . \n")
 
       @board.cells["A2"].fire_upon
       @board.cells["A3"].fire_upon
       
-      expect(@board.render).to eq("  1 2 3 4 \nA X X X . \nB . . . . \nC . . . . \nD . . . . \n")
+      expect(@board.render).to eq("            1 2 3 4 \n          A X X X . \n          B . . . . \n          C . . . . \n          D . . . . \n")
     end
 
     it "will verify hits and sinks in game play and debugging" do 
@@ -136,15 +136,15 @@ RSpec.describe Board do
       @board.cells["B1"].fire_upon
       @board.cells["A1"].fire_upon
 
-      expect(@board.render(true)).to eq("  1 2 3 4 \nA H S S . \nB M . . . \nC . . . . \nD . . . . \n")
-      expect(@board.render).to eq("  1 2 3 4 \nA H . . . \nB M . . . \nC . . . . \nD . . . . \n")
-      expect(@board.render(true)).to eq("  1 2 3 4 \nA H S S . \nB M . . . \nC . . . . \nD . . . . \n")
-      expect(@board.render).to eq("  1 2 3 4 \nA H . . . \nB M . . . \nC . . . . \nD . . . . \n")
+      expect(@board.render(true)).to eq("            1 2 3 4 \n          A H S S . \n          B M . . . \n          C . . . . \n          D . . . . \n")
+      expect(@board.render).to eq("            1 2 3 4 \n          A H . . . \n          B M . . . \n          C . . . . \n          D . . . . \n")
+      expect(@board.render(true)).to eq("            1 2 3 4 \n          A H S S . \n          B M . . . \n          C . . . . \n          D . . . . \n")
+      expect(@board.render).to eq("            1 2 3 4 \n          A H . . . \n          B M . . . \n          C . . . . \n          D . . . . \n")
 
       @board.cells["A2"].fire_upon
       @board.cells["A3"].fire_upon
       
-      expect(@board.render).to eq("  1 2 3 4 \nA X X X . \nB M . . . \nC . . . . \nD . . . . \n")
+      expect(@board.render).to eq("            1 2 3 4 \n          A X X X . \n          B M . . . \n          C . . . . \n          D . . . . \n")
     end
   end
 
