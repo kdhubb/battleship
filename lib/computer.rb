@@ -15,16 +15,22 @@ class Computer
   def ship_placement
     random_ship_coords
     @board.place(@cruiser, @cruiser_coords)
-    return @board.place(@submarine, @submarine_coords)
+    @board.place(@submarine, @submarine_coords)
   end
-
+# debugged the following method after project due date:
   def random_ship_coords
     @cruiser_coords = all_valid_placements(@cruiser).sample
     submarine_coords_all = all_valid_placements(@submarine)
-    remaining_sub_placs = submarine_coords_all.delete_if do |submarine_coord|
-      submarine_coord.include?(@cruiser_coords[0] || @cruiser_coords[1] || @cruiser_coords[2])
+    remaining_sub_placs0 = submarine_coords_all.delete_if do |submarine_coord|
+      submarine_coord.include?(@cruiser_coords[0])
     end
-    @submarine_coords = remaining_sub_placs.sample
+    remaining_sub_placs1 = remaining_sub_placs0.delete_if do |submarine_coord|
+      submarine_coord.include?(@cruiser_coords[1])
+    end
+    remaining_sub_placs2 = remaining_sub_placs1.delete_if do |submarine_coord|
+      submarine_coord.include?(@cruiser_coords[2])
+    end
+    @submarine_coords = remaining_sub_placs2.sample
   end
 
   def all_valid_placements(ship)
