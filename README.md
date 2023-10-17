@@ -1,9 +1,8 @@
-![its_working_star_wars](https://user-images.githubusercontent.com/118634754/231820290-a1aa78b5-840a-49aa-9424-4929a96a8323.gif)
-
 # Description
 Battleship is a CLI game where players can play the classic board game against a computer player (which uses random moves).
 
 # Iteration 3
+![its_working_star_wars](https://user-images.githubusercontent.com/118634754/231820290-a1aa78b5-840a-49aa-9424-4929a96a8323.gif)
 
 *Iteration 3 did not provide an interaction pattern. How did you approach designing this iteration? If you did not get to Iteration 3, reflect on how you think you would’ve approached the design and problem solving process.*
 
