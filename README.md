@@ -1,5 +1,8 @@
 ![its_working_star_wars](https://user-images.githubusercontent.com/118634754/231820290-a1aa78b5-840a-49aa-9424-4929a96a8323.gif)
 
+# Description
+Battleship is a CLI game where players can play the classic board game against a computer player (which uses random moves).
+
 # Iteration 3
 
 *Iteration 3 did not provide an interaction pattern. How did you approach designing this iteration? If you did not get to Iteration 3, reflect on how you think you would’ve approached the design and problem solving process.*
@@ -32,9 +35,9 @@ Given one more, there are a few things that we'd go back to:
 - `gets` proved to be quite challenging when it came to using `rspec`, especially as we were beginning to `puts` things to the terminal. With `puts` giving out a `nil` value and `gets` requiring inputs, we felt as though some of our test in our `game_spec` especially failed short of really proving that we had tested through things, though we had - just that we had done so in the only we we really understood how - to run the `runner` each time and see how the game was working.
 - This method of testing proved to be time consuming and tedious, and if we had more time we would like to continue researching how to tests when requiring user input and make our tests for the `Turn` and `Game` more in line with TDD about what we were seeing when using `puts`
 
-## Ghosts
+## Flakey Test
 
-- Somewhere inside of our `Computer` we have noticed a small bug that pops up about once every hundred times, maybe less... We can run our `rspec` and pass all tests nearly every time, but every once in a while the computer seems to have difficulty randomly placing its submarine. While we have pinpointed it down to that, we don't know exactly why it's happening and given more time, would like to try to drill down into exactly what is going on.
+- We noticed a small error that pops up about once every 30 or so times. We can run our `rspec` and pass all tests nearly every time, but every once in a while the methods that go into random placement of a `computer` submarine fails (overlapping a previous placement). Further reading and drilling down into the methods and how they're working allowed us to solve this bug with a small addition to a method.
 
 # Teamwork
 
